@@ -217,13 +217,21 @@
     i.value = v;
   }
 
-  function bloquearDomingo(campo) {
-    const data = new Date(campo.value);
-    if (data.getUTCDay() === 0) {
-      alert("A EM Soluções não realiza atendimentos aos domingos. Por favor, selecione uma data de segunda a sábado.");
-      campo.value = "";
-    }
+  function validarDataUnica(input) {
+  const dataCerta = "2026-06-17";
+  if (input.value !== dataCerta) {
+    input.value = dataCerta;
+    alert("Atenção: Apenas o dia 17/06/2026 está disponível para agendamento.");
   }
+}
+
+// Força o valor correto assim que a página carrega
+document.addEventListener("DOMContentLoaded", function() {
+  const campoData = document.getElementById("data");
+  if (campoData) {
+    campoData.value = "2026-06-17";
+  }
+});
 
   function verificarAnalise() {
     const s = document.getElementById('servico').value;
